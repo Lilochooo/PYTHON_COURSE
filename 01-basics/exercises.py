@@ -9,25 +9,40 @@ print("Hello, Python")
 # TODO 2: Create a variable `age` set to your age (an int), and a variable
 # `major` set to a string, then print them using an f-string, e.g.:
 # "I am 20 years old and studying Computer Engineering"
+age=int(19)
+major= "Computer Engineering"
+print(f"I am {age} years old and stuying {major}.")
 
 
 # TODO 3: Create a variable `x` holding an int, then reassign it to hold a
 # string. Print type(x) before and after reassigning to see it change.
+x=int(10)
+print(type(x))
+x=str("I love coding")
+print(type(x))
 
 
 # TODO 4: Ask the user for their name with input(), then print a greeting
 # using an f-string. (Run this one from the terminal so input() works.)
-
+name= input("Please provide your'e name:")
+print(f"Hello! {name} its nice to meet you.")
 
 # TODO 5: Ask the user for a number with input(), convert it to an int,
 # and print that number multiplied by 2.
-
+number=input("Please enter a number:")
+number=int(number)
+print(number*2)
 
 # TODO 6: Create a string variable `course = "ECE 2303"`. Print:
 #   - its length using len()
 #   - the uppercase version
 #   - the string repeated twice, concatenated with a space in between
-
+course=str("ECE 2303")
+print(len(course))
+print(course.upper())
+print(course, course)
 
 # TODO 7: Create a float `gpa = 3.7891` and print it formatted to 2 decimal
 # places using an f-string (hint: f"{gpa:.2f}")
+gpa= float(3.7891)
+print(f"{gpa:.2f}")
