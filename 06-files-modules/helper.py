@@ -4,3 +4,5 @@ Add a function `add(a, b)` below that returns a + b.
 """
 
 # TODO: define add(a, b) here
+def add(a,b):
+    return a+b
