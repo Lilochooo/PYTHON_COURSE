@@ -1,0 +1,47 @@
+class Resistor:
+    def __init__(self,resistance):
+        if resistance <0:
+            raise ValueError("Resistance must be positive")
+        self.resistance=resistance
+    def __repr__(self):
+        return f"Resistor ({self.resistance}ohm)"
+class Circut:
+    def __init__(self, resistors=None, mode="series" ):
+        """
+        resistors: list of Resistor objects
+        mode: "series" or "parallel" 
+        """
+        if mode not in ("series","parallel"):
+            raise ValueError("mode must be 'series' or 'parallel'")
+        self.resistors = resistors if resistors is not None else[]
+        self.mode = mode 
+    def add_resistor(self, resistor):
+        self.resistors.append(resistor)
+    def total_resistance(self):
+        if not self.resistors:
+            return 0
+        if self.mode =="series":
+            return sum(r.resistance for r in self.resistors)
+        else:
+            reciprocal_sum = sum(1/r.resistance for r in self.resistors)
+            return 1/reciprocal_sum
+    def total_current(self, voltage):
+        """ ohm;s law; I =V/R"""
+        r_total = self.total_resistance()
+        if r_total ==0:
+            raise ZeroDivisionError("Total resistance is zero- infinite current")
+        return voltage/ r_total
+if __name__ =="__main__":
+    r1 = Resistor(100)
+    r2 = Resistor(220)
+    r3 = Resistor(330)
+
+    series_circut =Circut([r1,r2,r3], mode="series")
+    print("Series total Resistance:",series_circut.total_resistance(),"ohm")
+    print("Series current at 12V:",series_circut.total_current(12), "A")
+
+    parallel_Circut =Circut([r1,r2,r3],mode="parallel")
+    print("Parallel total resistance:",parallel_Circut.total_resistance(),"ohm")
+    print("Parallel current at 12V:", parallel_Circut.total_current(12),"A")
+
+
